@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原材料成本计算器</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Cost Calculator</p>
+          <h1 id="page-title">原材料成本计算器</h1>
+          <p class="intro">录入 a/b/c/d 四种原料用量，按预设或 ERP 导入单价计算总原材料成本。</p>
+        </div>
+        <div class="summary" aria-live="polite">
+          <span>总原材料成本</span>
+          <strong id="totalCost">¥0.00</strong>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="数据操作">
+        <div class="import-box">
+          <label for="erpFile">ERP 单价导入</label>
+          <input id="erpFile" type="file" accept=".csv,text/csv" />
+          <button id="downloadTemplate" type="button">下载 CSV 模板</button>
+        </div>
+        <div class="actions">
+          <button id="resetPrices" type="button">恢复预设单价</button>
+          <button id="clearUsage" type="button">清空用量</button>
+        </div>
+      </section>
+
+      <p id="importStatus" class="status" role="status">当前使用预设单价，可手动修改。</p>
+
+      <section class="calculator" aria-label="成本计算表">
+        <div class="table-head" role="row">
+          <span>原料</span>
+          <span>单价</span>
+          <span>用量</span>
+          <span>小计</span>
+        </div>
+        <div id="materialRows" class="rows"></div>
+      </section>
+
+      <section class="details" aria-label="计算明细">
+        <div>
+          <span>已录入用量</span>
+          <strong id="totalUsage">0</strong>
+        </div>
+        <div>
+          <span>平均单位成本</span>
+          <strong id="avgCost">¥0.00</strong>
+        </div>
+        <div>
+          <span>最高成本原料</span>
+          <strong id="topMaterial">-</strong>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
